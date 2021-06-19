@@ -1,9 +1,13 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const { forecast, current, location, v1 } = require("../controllers/controllers")
+/*set DEBUG=myapp:* & npm start*/
+router.get('/v1', v1);
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/location', location);
+
+router.get('/current', current);
+
+router.get('/forecast', forecast);
 
 module.exports = router;
