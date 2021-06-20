@@ -45,7 +45,7 @@ function obtainOpenApi(){
         "/location": {
             "get": {
                 "summary": "Obtener información acerca de la ubicación",
-                "description": "Devuelve los datos de ubicación city según ip-api. En caso de utilizar un rango de ip no pública se mandará información con la ubicación de Telstra Corporation Ltd ",
+                "description": "Devuelve los datos de ubicación city según ip-api. En caso de utilizar una ip de rango no pública se mandará información con la ubicación de Telstra Corporation Ltd ",
                 "responses":{
                     "200": {
                         "description": "ok",
@@ -66,7 +66,7 @@ function obtainOpenApi(){
         "/current[city]": {
             "get": {
                 "summary": "Obtener información acerca de la ciudad actual y el clima del día",
-                "description": "City es un parámetro opcional. Devuelve los datos de ubicación city o la ubicación actual según ip-api y el estado del tiempo actual. En caso de no utilizar city y tener un rango de ip no pública se mandará información con la ubicación de Telstra Corporation Ltd ",
+                "description": "City es un parámetro opcional. Devuelve los datos de ubicación city o la ubicación actual según ip-api y el estado del tiempo actual. En caso de no utilizar city y tener una ip de rango no pública se mandará información con la ubicación de Telstra Corporation Ltd.",
                 "responses":{
                     "200": {
                         "description": "ok",
@@ -94,7 +94,7 @@ function obtainOpenApi(){
         "/forescast[city]": {
             "get": {
                 "summary": "Obtener información de la ciudad actual y el clima a 5 dias posteriores",
-                "description": "City es un parámetro opcional. Devuelve los datos de ubicación city o la ubicaciónactual segúnip-api y el estado del tiempo a 5 días los datos de ubicación city según ip-api. En caso de no utilizar una ciudad y tener rango de ip no pública se mandará información con la ubicación de Telstra Corporation Ltd ",
+                "description": "City es un parámetro opcional. Devuelve los datos de ubicación city o la ubicaciónactual segúnip-api y el estado del tiempo a 5 días. En caso de no utilizar una ciudad y tener una ip de rango no pública se mandará información con la ubicación de Telstra Corporation Ltd.",
                 "responses":{
                     "200": {
                         "description": "ok",
