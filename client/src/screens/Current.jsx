@@ -4,6 +4,7 @@ import Input from "../components/Input"
 import swal from "sweetalert";
 import CardWeather from "../components/CardWeather"
 import spinner from "../public/spinner.gif"
+import LocationContainer from "../components/LocationContainer";
 
 function Current(){
 
@@ -52,27 +53,6 @@ function Current(){
         return
     }
 
-    function objectToScreen(obj){
-        let properties = [];
-        let values = [];
-        for (let i in obj) {
-            properties.push(i);
-            values.push(obj[i])
-        }
-
-        let lines = properties.map((prop,index)=>{
-            return(
-                <div className="flex my-2">
-                    <span id={`${(new Date()).getTime()}`}>{prop}</span>
-                    <span id={`${(new Date()).getTime()}`} className="flex-1"></span>
-                    <span id={`${(new Date()).getTime()}`}>{values[index]}</span>
-                </div>
-            );
-        })
-
-        return lines
-    }
-
     return(
         <div>
             <Navbar></Navbar>
@@ -92,7 +72,7 @@ function Current(){
                             pressure: city.weather.main.pressure,
                             humidity: city.weather.main.humidity,
                             }}/>
-                            {objectToScreen(city.location)}
+                            <LocationContainer city={city} location={false}/>
                     </div>:<img src={spinner} alt="spinner"/>)
                 }
             </div>
