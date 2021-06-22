@@ -15,12 +15,18 @@ function Current(){
     function setValue(e){
         setSend(false);
         setCargando(true)
-        bringInformation()
+        bringInformation(e)
         setSend(true)
     }
 
-    async function bringInformation(){
-        let valorAEnviar = document.getElementById("inputAEnviar").value;
+    async function bringInformation(valor){
+        let valorAEnviar;
+        if (valor===undefined || valor===null || valor==="") {
+           valorAEnviar = document.getElementById("inputAEnviar").value;
+        }else{
+            valorAEnviar= valor;
+        }
+         
 
         if (valorAEnviar.trim().length === 0) {
             try{
@@ -54,10 +60,27 @@ function Current(){
         return
     }
 
+    function toggle() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+
     return(
         <div>
             <Navbar></Navbar>
-            <Input bringInformation={setValue}/>
+            <Input bringInformation={()=>{setValue("")}}/>
+            <div className="flex">
+                <div className="flex-1"></div>
+                <div class="dropdown mr-4 bg-blue-400 rounded-lg">
+                    <button onClick={toggle} class="dropbtn">Escoger ciudad</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <p className="text-center hover:bg-gray-300 cursor-pointer" onClick={()=>{setValue("san miguel, buenos aires, argentina")}}>San Miguel</p>
+                        <p className="text-center hover:bg-gray-300 cursor-pointer" onClick={()=>{setValue("caballito")}}>Caballito</p>
+                        <p className="text-center hover:bg-gray-300 cursor-pointer" onClick={()=>{setValue("campo de mayo")}}>Campo de Mayo</p>
+                        <p className="text-center hover:bg-gray-300 cursor-pointer" onClick={()=>{setValue("viedma")}}>Viedma</p>
+                        <p className="text-center hover:bg-gray-300 cursor-pointer" onClick={()=>{setValue("rosario")}}>Rosario</p>
+                    </div>
+                </div>
+            </div>
             {
                 cargando===true?<p className="text-blue-400 text-center">Cargando...</p>:<div></div>
             }
