@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import swal from 'sweetalert';
+import LocationContainer from "../components/LocationContainer";
+import spinner from "../public/spinner.gif"
 
 function Location_(){
 
     const [city,setCity] = useState({});
-    
+
+    useEffect(()=>{
+        bringLocation()
+    },[])
+
     function bringLocation(){
-        fetch(`${process.env.REACT_APP_LOCATION}/location`)
+        fetch(`${process.env.REACT_APP_API}/location`)
             .then(res=>res.json())
             .then(city=>{
                 if (city.hasOwnProperty("err")) {
@@ -20,24 +26,19 @@ function Location_(){
             })
     }
 
-    useEffect(()=>{
-        bringLocation()
-    },[])
-
     return(
         <div>
             <Navbar></Navbar>
-            <div className="flex flex-column justify-center items-center content-center">
-                {
-                    city.hasOwnProperty("location")?
-                    <div className="w-9/12 rounded-lg px-8 mt-4" style={{border:"1px solid #9ca3af"}}>
-                        <p>{city.location.city}</p>
-                    </div>:<div></div>
-                }
-                <div>
-
+            {
+                city.hasOwnProperty("location")?
+                <LocationContainer city={city} bringLocation={bringLocation}/>:
+                <div className="flex justify-center">
+                     <img src={spinner} alt="spinner"/>
                 </div>
-            </div>
+               
+            }
+            
+            <div className="h-5"></div>
         </div>
     );
 }
