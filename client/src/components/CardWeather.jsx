@@ -30,7 +30,7 @@ function CardWeather(props){
     return(// 
         <div className="flex justify-center my-4">
             {props.current === true?
-            <div className="md:w-1/2 rounded-lg shadow-xl" style={{padding:"5px 10px"}}>
+            <div className="md:w-1/2 w-60 rounded-lg shadow-xl" style={{padding:"5px 10px"}}>
             {
                 objectToScreen(props.data)
             }
