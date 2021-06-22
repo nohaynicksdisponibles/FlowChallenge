@@ -25,10 +25,15 @@ function LocationContainer(props){
         <div className="flex flex-column justify-center items-center content-center">
                 {
                     props.city.hasOwnProperty("location")?
+                    (props.location===true?
                     <div className="w-9/12 rounded-lg px-8 mt-4 divide-y divide-gray-200" style={{border:"1px solid #9ca3af"}}>
                         {objectToScreen(props.city.location)}
-                        
-                    </div>:<div></div>
+                    </div>:
+                    <div className="w-full px-8 mt-4 divide-y divide-gray-200 my-8">
+                        {objectToScreen(props.city.location)}
+                    </div>
+                    
+                    ):<div></div>
                 }
         </div>
     )

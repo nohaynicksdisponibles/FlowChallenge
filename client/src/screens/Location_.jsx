@@ -22,7 +22,7 @@ function Location_(){
                 setCity(city)
             })
             .catch(err=>{
-                swal("Error",err,"warning")
+                swal("Error","Ups, ha ocurrido un error","warning")
             })
     }
 
@@ -31,7 +31,7 @@ function Location_(){
             <Navbar></Navbar>
             {
                 city.hasOwnProperty("location")?
-                <LocationContainer city={city} bringLocation={bringLocation}/>:
+                <LocationContainer city={city} location={true}/>:
                 <div className="flex justify-center">
                      <img src={spinner} alt="spinner"/>
                 </div>
