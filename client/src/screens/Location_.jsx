@@ -22,7 +22,7 @@ function Location_(){
                 setCity(city)
             })
             .catch(err=>{
-                swal("Error",err,"warning")
+                swal("Error","Ups, ha ocurrido un error","warning")
             })
     }
 

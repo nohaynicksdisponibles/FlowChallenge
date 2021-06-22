@@ -10,10 +10,11 @@ function Current(){
 
     const [city,setCity] = useState({});
     const [send,setSend] = useState(false);
-
+    const [cargando,setCargando] = useState(false);
 
     function setValue(e){
         setSend(false);
+        setCargando(true)
         bringInformation()
         setSend(true)
     }
@@ -28,11 +29,11 @@ function Current(){
             if(res.hasOwnProperty("err")){
                 swal("Error",res.err,"warning")
             }
-      
+            setCargando(false)
             setCity(res)
             return;
             }catch(err){
-                swal("Error",err,"warning")
+                swal("Error","Ciudad no encontrada","warning")
             }
             return
         }
@@ -43,12 +44,12 @@ function Current(){
             if(res.hasOwnProperty("err")){
                 swal("Error",res.err,"warning")
             }
-   
+            setCargando(false)
             setCity(res)
             
             return;
         }catch(err){
-            swal("Error",err,"warning")
+            swal("Error","Ciudad no encontrada","warning")
         }
         return
     }
@@ -57,12 +58,15 @@ function Current(){
         <div>
             <Navbar></Navbar>
             <Input bringInformation={setValue}/>
+            {
+                cargando===true?<p className="text-blue-400 text-center">Cargando...</p>:<div></div>
+            }
             <div id="divCurrent" className="flex justify-center">
                 {
                     send === false ? <p id="vacio" className="text-blue-400 text-3xl text-center">Ingrese una ciudad</p>:
                     (city.hasOwnProperty("location")? 
                     <div className="w-9/12 rounded-lg px-8 mt-4 mb-10 divide-y divide-gray-200" style={{border:"1px solid #9ca3af"}}>
-                            <CardWeather id={`${(new Date()).getTime()}`} data={{
+                            <CardWeather id={`${(new Date()).getTime()}`} current={true} data={{
                             icon: city.weather.weather[0].icon,
                             description: city.weather.weather[0].description,
                             temp: city.weather.main.temp,
