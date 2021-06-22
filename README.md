@@ -8,6 +8,8 @@ En el backend se pueden correr los test correspondientes con el comando npm run 
 El backend fue deployado en heroku: https://flowchallenge.herokuapp.com 
 y el front en Vercel: https://flow-challenge.vercel.app/
 
+Todas las rutas devuelven un objeto JSON con la información correspondiente
+
 /v1: Devuelve información del backend según OpenAPI
 
 /location: Devuelve los datos de ubicación según ip-api. En caso de utilizar un rango de ip no pública se mandará información con la ubicación de Telstra Corporation Ltd.
