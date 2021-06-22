@@ -14,6 +14,6 @@ Todas las rutas devuelven un objeto JSON con la información correspondiente
 
 /location: Devuelve los datos de ubicación según ip-api. En caso de utilizar un rango de ip no pública se mandará información con la ubicación de Telstra Corporation Ltd.
 
-/current: Devuelve los datos de la ciudad escogida o la ubicación actual según ip-api y el estado del tiempo actual. En caso de no utilizar city y tener una ip de rango no pública se mandará información con la ubicación de Telstra Corporation Ltd.
+/current[city]: El parametro city es opcional. Devuelve los datos de la ciudad escogida o la ubicación actual según ip-api y el estado del tiempo actual. En caso de no utilizar city y tener una ip de rango no pública se mandará información con la ubicación de Telstra Corporation Ltd.
 
-/forescast: Devuelve los datos de la ciudad escogida o la ubicación actual según ip-api y el estado del tiempo a 5 días. En caso de no utilizar una ciudad y tener una ip de rango no pública se mandará información con la ubicación de Telstra Corporation Ltd.
+/forescast[city]: El parametro city es opcional. Devuelve los datos de la ciudad escogida o la ubicación actual según ip-api y el estado del tiempo a 5 días. En caso de no utilizar una ciudad y tener una ip de rango no pública se mandará información con la ubicación de Telstra Corporation Ltd.
