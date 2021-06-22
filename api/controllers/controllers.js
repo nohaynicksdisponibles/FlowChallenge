@@ -129,7 +129,8 @@ const v1 = (req, res) => {
 }
 
 const location = (req, res) => {
-    fetch(`http://ip-api.com/json/${req.ip}`)
+  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress || "139.130.4.5";
+  fetch(`http://ip-api.com/json/${ip}`)
       .then(response=>response.json())
       .then(location=>{
         if(location.status=="fail"){// ns1.telstra.net
@@ -173,8 +174,8 @@ const current = (req, res) => {
         });
   
     }else{
-  
-      fetch(`http://ip-api.com/json/139.130.4.5`)
+      const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress || "139.130.4.5";
+      fetch(`http://ip-api.com/json/${ip}`)
           .then(response=>response.json())
           .then(location=>{
   
@@ -264,7 +265,9 @@ const forecast = (req, res) => {
   
     }else{
       // SI SE PROVEE IP SE MANDA LA INFORMACION DEL LUGAR
-      fetch(`http://ip-api.com/json/${req.ip}`)
+      const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress || "139.130.4.5";
+
+      fetch(`http://ip-api.com/json/${ip}`)
           .then(response=>response.json())
           .then(location=>{
               // SE SUMA EL CLIMA A LA INFORMACION DEL LUGAR
